@@ -1,0 +1,53 @@
+@model IEnumerable<BoardAppDB.Models.Board>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlashKb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.FlashKb)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Update", "Edit", new { boardCode = item.BoardCode }) |
+                    @Html.ActionLink("Details", "Details", new { boardCode = item.BoardCode }) |
+                    @Html.ActionLink("Delete", "Delete", new { boardCode = item.BoardCode }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
